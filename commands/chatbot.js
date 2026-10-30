@@ -8,7 +8,7 @@ const execFileAsync = promisify(execFile);
 
 const USER_GROUP_DATA = path.join(__dirname, '../data/userGroupData.json');
 
-const GEMINI_API_KEY = 'AQ.Ab8RN6L8pBZHULqsMvhd5Mi9-8Tts1VqQyNYlETakYrY_odYYg';
+const GEMINI_API_KEY = 'AQ.Ab8RN6KaPFM88idpGUGUMPgmeOJxHVQLmNu08If1mvc1TcgxMw';
 const GEMINI_API_URL =
     'https://generativelanguage.googleapis.com/v1beta/interactions';
 
@@ -16,7 +16,6 @@ const GEMINI_TIMEOUT = 100000;
 
 // Primary এবং Fallback models
 const GEMINI_MODELS = [
-    'gemini-3.8-flash',
     'gemini-3.6-flash',
     'gemini-3.5-flash-lite'
 ];
@@ -409,7 +408,7 @@ async function handleChatbotResponse(
 
         if (!response) {
             return await sock.sendMessage(chatId, {
-                text: 'এখন উত্তর দিতে সমস্যা হচ্ছে। একটু পরে আবার চেষ্টা করো।'
+                text: 'এখন তোমার সাথে কথা বললো না। 😫'
             }, { quoted: message });
         }
 
@@ -430,7 +429,7 @@ async function handleChatbotResponse(
 
         try {
             await sock.sendMessage(chatId, {
-                text: 'একটু সমস্যা হয়েছে। আবার চেষ্টা করো। 😅'
+                text: 'এখন তোমার সাথে কথা বললো না। 😩'
             }, { quoted: message });
         } catch (sendError) {
             console.error('Message sending error:', sendError.message);
